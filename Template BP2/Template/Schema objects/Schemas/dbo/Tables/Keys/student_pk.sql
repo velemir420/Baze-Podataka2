@@ -1,0 +1,1 @@
+﻿ALTER TABLE student ADD CONSTRAINT student_pk PRIMARY KEY ( jmbg );

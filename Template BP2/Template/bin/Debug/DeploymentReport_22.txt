@@ -1,0 +1,40 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       [dbo].[kvar_pk] on [dbo].[kvar]
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[menza] (Table)
+       [dbo].[popravlja] (Table)
+       [dbo].[prijavljuje] (Table)
+       [dbo].[radnik] (Table)
+       [dbo].[soba] (Table)
+       [dbo].[sprema] (Table)
+       [dbo].[spremacica] (Table)
+       [dbo].[stanuje] (Table)
+       [dbo].[stud_centar] (Table)
+       [dbo].[stud_dom] (Table)
+       [dbo].[student] (Table)
+       [dbo].[kvar_pk] (Primary Key)
+       [dbo].[menza_stud_centar_fk] (Foreign Key)
+       [dbo].[popravlja_domar_fk] (Foreign Key)
+       [dbo].[popravlja_prijavljuje_fk] (Foreign Key)
+       [dbo].[prijavljuje_kvar_fk] (Foreign Key)
+       [dbo].[prijavljuje_stanuje_fk] (Foreign Key)
+       [dbo].[radnik_stud_centar_fk] (Foreign Key)
+       [dbo].[soba_stud_dom_fk] (Foreign Key)
+       [dbo].[sprema_menza_fk] (Foreign Key)
+       [dbo].[sprema_spremacica_fk] (Foreign Key)
+       [dbo].[spremacica_radnik_fk] (Foreign Key)
+       [dbo].[stanuje_soba_fk] (Foreign Key)
+       [dbo].[stanuje_student_fk] (Foreign Key)
+       [dbo].[stud_dom_stud_centar_fk] (Foreign Key)
+       [dbo].[domar_radnik_fk] (Foreign Key)
+
+** Supporting actions

@@ -1,0 +1,1 @@
+﻿ALTER TABLE radnik ADD CONSTRAINT radnik_pk PRIMARY KEY ( id_radnik );

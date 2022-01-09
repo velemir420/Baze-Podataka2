@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StudentskiCentarModelStoreContainer" CdmEntityContainer="StudentskiCentarEntities">
+    <EntitySetMapping Name="domars">
+      <EntityTypeMapping TypeName="IsTypeOf(StudentskiCentarModel.domar)">
+        <MappingFragment StoreEntitySet="domars">
+          <ScalarProperty Name="id_radnik" ColumnName="id_radnik" />
+          <ScalarProperty Name="licenca" ColumnName="licenca" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kvars">
+      <EntityTypeMapping TypeName="IsTypeOf(StudentskiCentarModel.kvar)">
+        <MappingFragment StoreEntitySet="kvars">
+          <ScalarProperty Name="id_kvar" ColumnName="id_kvar" />
+          <ScalarProperty Name="opis" ColumnName="opis" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="menzas">
+      <EntityTypeMapping TypeName="IsTypeOf(StudentskiCentarModel.menza)">
+        <MappingFragment StoreEntitySet="menzas">
+          <ScalarProperty Name="id_menza" ColumnName="id_menza" />
+          <ScalarProperty Name="ime" ColumnName="ime" />
+          <ScalarProperty Name="br_mesta" ColumnName="br_mesta" />
+          <ScalarProperty Name="stud_centar_id_stud_centar" ColumnName="stud_centar_id_stud_centar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="prijavljujes">
+      <EntityTypeMapping TypeName="IsTypeOf(StudentskiCentarModel.prijavljuje)">
+        <MappingFragment StoreEntitySet="prijavljujes">
+          <ScalarProperty Name="stanuje_soba_id_soba" ColumnName="stanuje_soba_id_soba" />
+          <ScalarProperty Name="stanuje_student_jmbg" ColumnName="stanuje_student_jmbg" />
+          <ScalarProperty Name="kvar_id_kvar" ColumnName="kvar_id_kvar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="radniks">
+      <EntityTypeMapping TypeName="IsTypeOf(StudentskiCentarModel.radnik)">
+        <MappingFragment StoreEntitySet="radniks">
+          <ScalarProperty Name="id_radnik" ColumnName="id_radnik" />
+          <ScalarProperty Name="ime" ColumnName="ime" />
+          <ScalarProperty Name="prezime" ColumnName="prezime" />
+          <ScalarProperty Name="god_staza" ColumnName="god_staza" />
+          <ScalarProperty Name="stud_centar_id_stud_centar" ColumnName="stud_centar_id_stud_centar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sobas">
+      <EntityTypeMapping TypeName="IsTypeOf(StudentskiCentarModel.soba)">
+        <MappingFragment StoreEntitySet="sobas">
+          <ScalarProperty Name="id_soba" ColumnName="id_soba" />
+          <ScalarProperty Name="broj" ColumnName="broj" />
+          <ScalarProperty Name="stud_dom_id_stud_dom" ColumnName="stud_dom_id_stud_dom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="spremacicas">
+      <EntityTypeMapping TypeName="IsTypeOf(StudentskiCentarModel.spremacica)">
+        <MappingFragment StoreEntitySet="spremacicas">
+          <ScalarProperty Name="id_radnik" ColumnName="id_radnik" />
+          <ScalarProperty Name="sanitarna_licenca" ColumnName="sanitarna_licenca" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stanujes">
+      <EntityTypeMapping TypeName="IsTypeOf(StudentskiCentarModel.stanuje)">
+        <MappingFragment StoreEntitySet="stanujes">
+          <ScalarProperty Name="soba_id_soba" ColumnName="soba_id_soba" />
+          <ScalarProperty Name="student_jmbg" ColumnName="student_jmbg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stud_centar">
+      <EntityTypeMapping TypeName="IsTypeOf(StudentskiCentarModel.stud_centar)">
+        <MappingFragment StoreEntitySet="stud_centar">
+          <ScalarProperty Name="id_stud_centar" ColumnName="id_stud_centar" />
+          <ScalarProperty Name="ime" ColumnName="ime" />
+          <ScalarProperty Name="grad" ColumnName="grad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stud_dom">
+      <EntityTypeMapping TypeName="IsTypeOf(StudentskiCentarModel.stud_dom)">
+        <MappingFragment StoreEntitySet="stud_dom">
+          <ScalarProperty Name="id_stud_dom" ColumnName="id_stud_dom" />
+          <ScalarProperty Name="ime" ColumnName="ime" />
+          <ScalarProperty Name="br_soba" ColumnName="br_soba" />
+          <ScalarProperty Name="stud_centar_id_stud_centar" ColumnName="stud_centar_id_stud_centar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="students">
+      <EntityTypeMapping TypeName="IsTypeOf(StudentskiCentarModel.student)">
+        <MappingFragment StoreEntitySet="students">
+          <ScalarProperty Name="jmbg" ColumnName="jmbg" />
+          <ScalarProperty Name="ime" ColumnName="ime" />
+          <ScalarProperty Name="prezime" ColumnName="prezime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="popravlja" TypeName="StudentskiCentarModel.popravlja" StoreEntitySet="popravlja">
+      <EndProperty Name="domar">
+        <ScalarProperty Name="id_radnik" ColumnName="domars_id_radnik" />
+      </EndProperty>
+      <EndProperty Name="prijavljuje">
+        <ScalarProperty Name="stanuje_soba_id_soba" ColumnName="prijavljujes_stanuje_soba_id_soba" />
+        <ScalarProperty Name="stanuje_student_jmbg" ColumnName="prijavljujes_stanuje_student_jmbg" />
+        <ScalarProperty Name="kvar_id_kvar" ColumnName="prijavljujes_kvar_id_kvar" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="sprema" TypeName="StudentskiCentarModel.sprema" StoreEntitySet="sprema">
+      <EndProperty Name="menza">
+        <ScalarProperty Name="id_menza" ColumnName="menzas_id_menza" />
+      </EndProperty>
+      <EndProperty Name="spremacica">
+        <ScalarProperty Name="id_radnik" ColumnName="spremacicas_id_radnik" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

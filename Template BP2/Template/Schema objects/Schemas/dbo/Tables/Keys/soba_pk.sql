@@ -1,0 +1,1 @@
+﻿ALTER TABLE soba ADD CONSTRAINT soba_pk PRIMARY KEY ( id_soba );

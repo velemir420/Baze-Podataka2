@@ -1,0 +1,1 @@
+﻿ALTER TABLE kvar ADD CONSTRAINT kvar_pk PRIMARY KEY ( id_kvar );

@@ -1,0 +1,15 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       [dbo].[domar_pk] on [dbo].[domar]
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[domar_pk] (Primary Key)
+
+** Supporting actions

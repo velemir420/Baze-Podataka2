@@ -1,0 +1,1 @@
+﻿ALTER TABLE spremacica ADD CONSTRAINT spremacica_pk PRIMARY KEY ( id_radnik );

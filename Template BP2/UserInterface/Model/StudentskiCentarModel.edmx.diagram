@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0b02e1f0434e45518aa87129c547735d" Name="Diagram1" ZoomLevel="62">
+        <EntityTypeShape EntityType="StudentskiCentarModel.domar" Width="1.5" PointX="5.125" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentskiCentarModel.kvar" Width="1.5" PointX="7.375" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentskiCentarModel.menza" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentskiCentarModel.prijavljuje" Width="1.5" PointX="9.625" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentskiCentarModel.radnik" Width="1.5" PointX="2.875" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentskiCentarModel.soba" Width="1.5" PointX="3.375" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentskiCentarModel.spremacica" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentskiCentarModel.stanuje" Width="1.5" PointX="9.625" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentskiCentarModel.stud_centar" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentskiCentarModel.stud_dom" Width="1.5" PointX="2.875" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentskiCentarModel.student" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="StudentskiCentarModel.domar_radnik_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentskiCentarModel.prijavljuje_kvar_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentskiCentarModel.menza_stud_centar_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentskiCentarModel.prijavljuje_stanuje_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentskiCentarModel.radnik_stud_centar_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentskiCentarModel.spremacica_radnik_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentskiCentarModel.soba_stud_dom_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentskiCentarModel.stanuje_soba_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentskiCentarModel.stanuje_student_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentskiCentarModel.stud_dom_stud_centar_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentskiCentarModel.popravlja" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentskiCentarModel.sprema" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

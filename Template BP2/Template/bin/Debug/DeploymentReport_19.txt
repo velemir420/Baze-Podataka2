@@ -1,0 +1,18 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[domar] (Table)
+
+** Supporting actions
+
+The database containment option has been changed to None.  This may result in deployment failure if the state of the database is not compliant with this containment level.
+

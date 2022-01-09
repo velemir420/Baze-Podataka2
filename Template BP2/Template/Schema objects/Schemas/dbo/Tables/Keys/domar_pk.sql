@@ -1,0 +1,1 @@
+﻿ALTER TABLE domar ADD CONSTRAINT domar_pk PRIMARY KEY ( id_radnik );

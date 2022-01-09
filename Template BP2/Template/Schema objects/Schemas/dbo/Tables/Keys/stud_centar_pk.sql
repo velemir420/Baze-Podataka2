@@ -1,0 +1,1 @@
+﻿ALTER TABLE stud_centar ADD CONSTRAINT stud_centar_pk PRIMARY KEY ( id_stud_centar );

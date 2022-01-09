@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StudentskiCentarModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="domar">
+    <Key>
+      <PropertyRef Name="id_radnik" />
+    </Key>
+    <Property Name="licenca" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="id_radnik" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="radnik" Relationship="Self.domar_radnik_fk" FromRole="domar" ToRole="radnik" />
+    <NavigationProperty Name="prijavljujes" Relationship="Self.popravlja" FromRole="domar" ToRole="prijavljuje" />
+  </EntityType>
+  <EntityType Name="kvar">
+    <Key>
+      <PropertyRef Name="id_kvar" />
+    </Key>
+    <Property Name="id_kvar" Type="Int32" Nullable="false" />
+    <Property Name="opis" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="prijavljujes" Relationship="Self.prijavljuje_kvar_fk" FromRole="kvar" ToRole="prijavljuje" />
+  </EntityType>
+  <EntityType Name="menza">
+    <Key>
+      <PropertyRef Name="id_menza" />
+    </Key>
+    <Property Name="id_menza" Type="Int32" Nullable="false" />
+    <Property Name="ime" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="br_mesta" Type="Int32" />
+    <Property Name="stud_centar_id_stud_centar" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="stud_centar" Relationship="Self.menza_stud_centar_fk" FromRole="menza" ToRole="stud_centar" />
+    <NavigationProperty Name="spremacicas" Relationship="Self.sprema" FromRole="menza" ToRole="spremacica" />
+  </EntityType>
+  <EntityType Name="prijavljuje">
+    <Key>
+      <PropertyRef Name="stanuje_soba_id_soba" />
+      <PropertyRef Name="stanuje_student_jmbg" />
+      <PropertyRef Name="kvar_id_kvar" />
+    </Key>
+    <Property Name="stanuje_soba_id_soba" Type="Int32" Nullable="false" />
+    <Property Name="stanuje_student_jmbg" Type="String" MaxLength="13" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="kvar_id_kvar" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="kvar" Relationship="Self.prijavljuje_kvar_fk" FromRole="prijavljuje" ToRole="kvar" />
+    <NavigationProperty Name="stanuje" Relationship="Self.prijavljuje_stanuje_fk" FromRole="prijavljuje" ToRole="stanuje" />
+    <NavigationProperty Name="domars" Relationship="Self.popravlja" FromRole="prijavljuje" ToRole="domar" />
+  </EntityType>
+  <EntityType Name="radnik">
+    <Key>
+      <PropertyRef Name="id_radnik" />
+    </Key>
+    <Property Name="ime" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="prezime" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="god_staza" Type="Int32" />
+    <Property Name="id_radnik" Type="Int32" Nullable="false" />
+    <Property Name="stud_centar_id_stud_centar" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="domar" Relationship="Self.domar_radnik_fk" FromRole="radnik" ToRole="domar" />
+    <NavigationProperty Name="stud_centar" Relationship="Self.radnik_stud_centar_fk" FromRole="radnik" ToRole="stud_centar" />
+    <NavigationProperty Name="spremacica" Relationship="Self.spremacica_radnik_fk" FromRole="radnik" ToRole="spremacica" />
+  </EntityType>
+  <EntityType Name="soba">
+    <Key>
+      <PropertyRef Name="id_soba" />
+    </Key>
+    <Property Name="id_soba" Type="Int32" Nullable="false" />
+    <Property Name="broj" Type="Int32" />
+    <Property Name="stud_dom_id_stud_dom" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="stud_dom" Relationship="Self.soba_stud_dom_fk" FromRole="soba" ToRole="stud_dom" />
+    <NavigationProperty Name="stanujes" Relationship="Self.stanuje_soba_fk" FromRole="soba" ToRole="stanuje" />
+  </EntityType>
+  <EntityType Name="spremacica">
+    <Key>
+      <PropertyRef Name="id_radnik" />
+    </Key>
+    <Property Name="sanitarna_licenca" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="id_radnik" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="radnik" Relationship="Self.spremacica_radnik_fk" FromRole="spremacica" ToRole="radnik" />
+    <NavigationProperty Name="menzas" Relationship="Self.sprema" FromRole="spremacica" ToRole="menza" />
+  </EntityType>
+  <EntityType Name="stanuje">
+    <Key>
+      <PropertyRef Name="soba_id_soba" />
+      <PropertyRef Name="student_jmbg" />
+    </Key>
+    <Property Name="soba_id_soba" Type="Int32" Nullable="false" />
+    <Property Name="student_jmbg" Type="String" MaxLength="13" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="prijavljujes" Relationship="Self.prijavljuje_stanuje_fk" FromRole="stanuje" ToRole="prijavljuje" />
+    <NavigationProperty Name="soba" Relationship="Self.stanuje_soba_fk" FromRole="stanuje" ToRole="soba" />
+    <NavigationProperty Name="student" Relationship="Self.stanuje_student_fk" FromRole="stanuje" ToRole="student" />
+  </EntityType>
+  <EntityType Name="stud_centar">
+    <Key>
+      <PropertyRef Name="id_stud_centar" />
+    </Key>
+    <Property Name="id_stud_centar" Type="Int32" Nullable="false" />
+    <Property Name="ime" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="grad" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="menzas" Relationship="Self.menza_stud_centar_fk" FromRole="stud_centar" ToRole="menza" />
+    <NavigationProperty Name="radniks" Relationship="Self.radnik_stud_centar_fk" FromRole="stud_centar" ToRole="radnik" />
+    <NavigationProperty Name="stud_dom" Relationship="Self.stud_dom_stud_centar_fk" FromRole="stud_centar" ToRole="stud_dom" />
+  </EntityType>
+  <EntityType Name="stud_dom">
+    <Key>
+      <PropertyRef Name="id_stud_dom" />
+    </Key>
+    <Property Name="id_stud_dom" Type="Int32" Nullable="false" />
+    <Property Name="ime" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="br_soba" Type="Int32" />
+    <Property Name="stud_centar_id_stud_centar" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="sobas" Relationship="Self.soba_stud_dom_fk" FromRole="stud_dom" ToRole="soba" />
+    <NavigationProperty Name="stud_centar" Relationship="Self.stud_dom_stud_centar_fk" FromRole="stud_dom" ToRole="stud_centar" />
+  </EntityType>
+  <EntityType Name="student">
+    <Key>
+      <PropertyRef Name="jmbg" />
+    </Key>
+    <Property Name="jmbg" Type="String" MaxLength="13" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="ime" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="prezime" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="stanujes" Relationship="Self.stanuje_student_fk" FromRole="student" ToRole="stanuje" />
+  </EntityType>
+  <Association Name="domar_radnik_fk">
+    <End Role="radnik" Type="Self.radnik" Multiplicity="1" />
+    <End Role="domar" Type="Self.domar" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="radnik">
+        <PropertyRef Name="id_radnik" />
+      </Principal>
+      <Dependent Role="domar">
+        <PropertyRef Name="id_radnik" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="prijavljuje_kvar_fk">
+    <End Role="kvar" Type="Self.kvar" Multiplicity="1" />
+    <End Role="prijavljuje" Type="Self.prijavljuje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kvar">
+        <PropertyRef Name="id_kvar" />
+      </Principal>
+      <Dependent Role="prijavljuje">
+        <PropertyRef Name="kvar_id_kvar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="menza_stud_centar_fk">
+    <End Role="stud_centar" Type="Self.stud_centar" Multiplicity="1" />
+    <End Role="menza" Type="Self.menza" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stud_centar">
+        <PropertyRef Name="id_stud_centar" />
+      </Principal>
+      <Dependent Role="menza">
+        <PropertyRef Name="stud_centar_id_stud_centar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="prijavljuje_stanuje_fk">
+    <End Role="stanuje" Type="Self.stanuje" Multiplicity="1" />
+    <End Role="prijavljuje" Type="Self.prijavljuje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stanuje">
+        <PropertyRef Name="soba_id_soba" />
+        <PropertyRef Name="student_jmbg" />
+      </Principal>
+      <Dependent Role="prijavljuje">
+        <PropertyRef Name="stanuje_soba_id_soba" />
+        <PropertyRef Name="stanuje_student_jmbg" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="radnik_stud_centar_fk">
+    <End Role="stud_centar" Type="Self.stud_centar" Multiplicity="1" />
+    <End Role="radnik" Type="Self.radnik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stud_centar">
+        <PropertyRef Name="id_stud_centar" />
+      </Principal>
+      <Dependent Role="radnik">
+        <PropertyRef Name="stud_centar_id_stud_centar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="spremacica_radnik_fk">
+    <End Role="radnik" Type="Self.radnik" Multiplicity="1" />
+    <End Role="spremacica" Type="Self.spremacica" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="radnik">
+        <PropertyRef Name="id_radnik" />
+      </Principal>
+      <Dependent Role="spremacica">
+        <PropertyRef Name="id_radnik" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="soba_stud_dom_fk">
+    <End Role="stud_dom" Type="Self.stud_dom" Multiplicity="1" />
+    <End Role="soba" Type="Self.soba" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stud_dom">
+        <PropertyRef Name="id_stud_dom" />
+      </Principal>
+      <Dependent Role="soba">
+        <PropertyRef Name="stud_dom_id_stud_dom" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="stanuje_soba_fk">
+    <End Role="soba" Type="Self.soba" Multiplicity="1" />
+    <End Role="stanuje" Type="Self.stanuje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="soba">
+        <PropertyRef Name="id_soba" />
+      </Principal>
+      <Dependent Role="stanuje">
+        <PropertyRef Name="soba_id_soba" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="stanuje_student_fk">
+    <End Role="student" Type="Self.student" Multiplicity="1" />
+    <End Role="stanuje" Type="Self.stanuje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="student">
+        <PropertyRef Name="jmbg" />
+      </Principal>
+      <Dependent Role="stanuje">
+        <PropertyRef Name="student_jmbg" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="stud_dom_stud_centar_fk">
+    <End Role="stud_centar" Type="Self.stud_centar" Multiplicity="1" />
+    <End Role="stud_dom" Type="Self.stud_dom" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stud_centar">
+        <PropertyRef Name="id_stud_centar" />
+      </Principal>
+      <Dependent Role="stud_dom">
+        <PropertyRef Name="stud_centar_id_stud_centar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="popravlja">
+    <End Role="domar" Type="Self.domar" Multiplicity="*" />
+    <End Role="prijavljuje" Type="Self.prijavljuje" Multiplicity="*" />
+  </Association>
+  <Association Name="sprema">
+    <End Role="menza" Type="Self.menza" Multiplicity="*" />
+    <End Role="spremacica" Type="Self.spremacica" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="StudentskiCentarEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="domars" EntityType="Self.domar" />
+    <EntitySet Name="kvars" EntityType="Self.kvar" />
+    <EntitySet Name="menzas" EntityType="Self.menza" />
+    <EntitySet Name="prijavljujes" EntityType="Self.prijavljuje" />
+    <EntitySet Name="radniks" EntityType="Self.radnik" />
+    <EntitySet Name="sobas" EntityType="Self.soba" />
+    <EntitySet Name="spremacicas" EntityType="Self.spremacica" />
+    <EntitySet Name="stanujes" EntityType="Self.stanuje" />
+    <EntitySet Name="stud_centar" EntityType="Self.stud_centar" />
+    <EntitySet Name="stud_dom" EntityType="Self.stud_dom" />
+    <EntitySet Name="students" EntityType="Self.student" />
+    <AssociationSet Name="domar_radnik_fk" Association="Self.domar_radnik_fk">
+      <End Role="radnik" EntitySet="radniks" />
+      <End Role="domar" EntitySet="domars" />
+    </AssociationSet>
+    <AssociationSet Name="prijavljuje_kvar_fk" Association="Self.prijavljuje_kvar_fk">
+      <End Role="kvar" EntitySet="kvars" />
+      <End Role="prijavljuje" EntitySet="prijavljujes" />
+    </AssociationSet>
+    <AssociationSet Name="menza_stud_centar_fk" Association="Self.menza_stud_centar_fk">
+      <End Role="stud_centar" EntitySet="stud_centar" />
+      <End Role="menza" EntitySet="menzas" />
+    </AssociationSet>
+    <AssociationSet Name="prijavljuje_stanuje_fk" Association="Self.prijavljuje_stanuje_fk">
+      <End Role="stanuje" EntitySet="stanujes" />
+      <End Role="prijavljuje" EntitySet="prijavljujes" />
+    </AssociationSet>
+    <AssociationSet Name="radnik_stud_centar_fk" Association="Self.radnik_stud_centar_fk">
+      <End Role="stud_centar" EntitySet="stud_centar" />
+      <End Role="radnik" EntitySet="radniks" />
+    </AssociationSet>
+    <AssociationSet Name="spremacica_radnik_fk" Association="Self.spremacica_radnik_fk">
+      <End Role="radnik" EntitySet="radniks" />
+      <End Role="spremacica" EntitySet="spremacicas" />
+    </AssociationSet>
+    <AssociationSet Name="soba_stud_dom_fk" Association="Self.soba_stud_dom_fk">
+      <End Role="stud_dom" EntitySet="stud_dom" />
+      <End Role="soba" EntitySet="sobas" />
+    </AssociationSet>
+    <AssociationSet Name="stanuje_soba_fk" Association="Self.stanuje_soba_fk">
+      <End Role="soba" EntitySet="sobas" />
+      <End Role="stanuje" EntitySet="stanujes" />
+    </AssociationSet>
+    <AssociationSet Name="stanuje_student_fk" Association="Self.stanuje_student_fk">
+      <End Role="student" EntitySet="students" />
+      <End Role="stanuje" EntitySet="stanujes" />
+    </AssociationSet>
+    <AssociationSet Name="stud_dom_stud_centar_fk" Association="Self.stud_dom_stud_centar_fk">
+      <End Role="stud_centar" EntitySet="stud_centar" />
+      <End Role="stud_dom" EntitySet="stud_dom" />
+    </AssociationSet>
+    <AssociationSet Name="popravlja" Association="Self.popravlja">
+      <End Role="domar" EntitySet="domars" />
+      <End Role="prijavljuje" EntitySet="prijavljujes" />
+    </AssociationSet>
+    <AssociationSet Name="sprema" Association="Self.sprema">
+      <End Role="menza" EntitySet="menzas" />
+      <End Role="spremacica" EntitySet="spremacicas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
